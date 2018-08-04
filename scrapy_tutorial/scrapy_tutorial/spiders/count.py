@@ -29,7 +29,7 @@ class CountSpider(scrapy.Spider):
             yield scrapy.Request(url=u, callback=self.parse)
 
     def parse(self, response):
-        # Get number of reviews and then calculate number of pages.
+        # Get item number from e.g. '94 Candidate Interview Reviews' and generate URLs for other pages
         text = response.xpath('//*[@id="MainCol"]/div[3]/div[1]/div[1]/h2/text()').extract_first()
         self.log(text)
         text_list = text.split()
@@ -40,7 +40,7 @@ class CountSpider(scrapy.Spider):
             json_str = json.dumps(url_list)
             self.log(json_str)
             
-            # Replace the line of urls in the spider file. Note the list of urls must be written in one line.
+            # Replace the line of urls in the spider file. Note the URLs must be written in one line.
             pattern = 'urls = ['
             spider_file = "scrapy_tutorial/spiders/fetch.py"
             self.log(spider_file)
