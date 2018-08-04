@@ -1,2 +1,2 @@
 # web-crawler
-A basic web spider with Scrapy and Python 3
+A simple web spider with Scrapy and Python 3
