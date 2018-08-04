@@ -21,4 +21,4 @@ class FetchSpider(scrapy.Spider):
         items = response.xpath('//*/div[3]/div/div[2]/div[2]/div/div/ul/li/span/text()').extract()
         for d in items:
             self.count += 1
-            yield {self.count: unidecode(d)}
+            yield {response.url.split(',')[-1].split('.')[0]: unidecode(d)}
