@@ -12,8 +12,7 @@ import fileinput
 class CountSpider(scrapy.Spider):
     name = "count"
     count = 0
-    _url = 'https://www.glassdoor.ie/Interview/Google-Australia-Interview-Questions-EI_IE9079.0,6_IL.7,16_IN16.htm'
-#    url = 'https://www.glassdoor.ie/Interview/Accenture-Australia-Interview-Questions-EI_IE4138.0,9_IL.10,19_IN16.htm'
+    _url = 'https://www.glassdoor.com/Interview/Google-Australia-Interview-Questions-EI_IE9079.0,6_IL.7,16_IN16.htm'
 
     def __init__(self, url=None, *args, **kwargs):
         super(CountSpider, self).__init__(*args, **kwargs)
@@ -29,7 +28,7 @@ class CountSpider(scrapy.Spider):
             yield scrapy.Request(url=u, callback=self.parse)
 
     def parse(self, response):
-        # Get item number from e.g. '94 Candidate Interview Reviews' and generate URLs for other pages
+        # Get item number from texts e.g. '94 Candidate Interview Reviews' and generate URLs for other pages
         text = response.xpath('//*[@id="MainCol"]/div[3]/div[1]/div[1]/h2/text()').extract_first()
         self.log(text)
         text_list = text.split()
@@ -38,10 +37,9 @@ class CountSpider(scrapy.Spider):
             url_list = [self._url.replace('.htm', '_IP{0}.htm'.format(i)) for i in range(2, c+2)]
             url_list.insert(0, self._url)
             json_str = json.dumps(url_list)
-            self.log(json_str)
             
-            # Replace the line of urls in the spider file. Note the URLs must be written in one line.
-            pattern = 'urls = ['
+            # Replace the URLs in the spider file. Note the URLs must be written in one line.
+            pattern = 'start_urls = ['
             spider_file = "scrapy_tutorial/spiders/fetch.py"
             self.log(spider_file)
             self.log(pattern)
@@ -51,7 +49,7 @@ class CountSpider(scrapy.Spider):
                     print(line[0:idx] + json_str)
                 else:
                     print(line.rstrip('\r\n'))
-            yield {text: json_str}
+            yield {'text': text, 'URLs': json_str}
 
     def spider_closed(self, spider):
         spider.logger.info('Spider closed: %s', spider.name)
