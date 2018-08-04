@@ -13,7 +13,9 @@ conda install scrapy -c conda-forge
 conda install unidecode  
 
 ### A potential problem on Windows
+Some people might encounter the following problem on Windows:  
 ImportError: DLL load failed: The operating system cannot run %1.  
+
 Reinstalling cryptography may solve the problem:  
 pip uninstall cryptography  
 pip install cryptography  
