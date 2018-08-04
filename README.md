@@ -8,7 +8,7 @@ scrapy
 unidecode  
 
 ### Installation
-Install Anaconda 4 with Python 3 and then install the Python packages via the conda command:  
+Install Anaconda 4 with Python 3 and then install the Python packages via the conda command.  
 conda install scrapy -c conda-forge  
 conda install unidecode  
 
@@ -16,6 +16,6 @@ conda install unidecode
 Some people might encounter the following problem on Windows.  
 ImportError: DLL load failed: The operating system cannot run %1.  
 
-Reinstalling cryptography may solve the problem:  
+Reinstalling cryptography may solve the problem.  
 pip uninstall cryptography  
 pip install cryptography  
