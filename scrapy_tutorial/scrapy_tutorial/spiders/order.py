@@ -51,7 +51,7 @@ class OrderSpider(scrapy.Spider):
         items = response.xpath('//*/div[3]/div/div[2]/div[2]/div/div/ul/li/span/text()').extract()
         for d in items:
             self.count += 1
-            data = {'id': self.count, 'text': unidecode(d), 'page': response.url.split(',')[-1].split('.')[0]}
+            data = {'q': unidecode(d), 'id': self.count, 'page': response.url.split(',')[-1].split('.')[0]}
             yield data
 
     def spider_closed(self, spider):
