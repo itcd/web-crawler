@@ -12,15 +12,21 @@ import fileinput
 class CountSpider(scrapy.Spider):
     name = "count"
     count = 0
-    url = 'https://www.glassdoor.ie/Interview/Google-Australia-Interview-Questions-EI_IE9079.0,6_IL.7,16_IN16.htm'
+    _url = 'https://www.glassdoor.ie/Interview/Google-Australia-Interview-Questions-EI_IE9079.0,6_IL.7,16_IN16.htm'
 #    url = 'https://www.glassdoor.ie/Interview/Accenture-Australia-Interview-Questions-EI_IE4138.0,9_IL.10,19_IN16.htm'
+
+    def __init__(self, url=None, *args, **kwargs):
+        super(CountSpider, self).__init__(*args, **kwargs)
+        self.log(url)
+        if url is not None:
+        	self._url = url
 
     def start_requests(self):
         urls = [
-            self.url
+            self._url
         ]
-        for url in urls:
-            yield scrapy.Request(url=url, callback=self.parse)
+        for u in urls:
+            yield scrapy.Request(url=u, callback=self.parse)
 
     def parse(self, response):
         # Get number of reviews and then calculate number of pages.
@@ -29,8 +35,8 @@ class CountSpider(scrapy.Spider):
         text_list = text.split()
         if(len(text_list) > 0):
             c = int(int(text_list[0]) / 10)
-            url_list = [self.url.replace('.htm', '_IP{0}.htm'.format(i)) for i in range(2, c+2)]
-            url_list.insert(0, self.url)
+            url_list = [self._url.replace('.htm', '_IP{0}.htm'.format(i)) for i in range(2, c+2)]
+            url_list.insert(0, self._url)
             json_str = json.dumps(url_list)
             self.log(json_str)
             
