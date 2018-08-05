@@ -8,7 +8,7 @@ scrapy
 unidecode  
 
 ### Installation
-Install Anaconda 4 with Python 3 and then install the Python packages via the conda command.  
+Install Anaconda with Python 3 and install the Python packages via the conda command.  
 conda install scrapy -c conda-forge  
 conda install unidecode  
 
