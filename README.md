@@ -1,6 +1,6 @@
 # web-crawler
 ## A simple web spider with Scrapy and Python 3
-Note the ordered mode is slower than the unordered mode.
+Note the ordered mode, which yields requests one at a time, is slower than the unordered mode.
 
 ### Prerequisite
 Python 3  
