@@ -19,3 +19,6 @@ ImportError: DLL load failed: The operating system cannot run %1.
 Reinstalling cryptography may solve the problem.  
 pip uninstall cryptography  
 pip install cryptography  
+
+### Usage
+Go to the Scrapy project’s top level directory (where scrapy.cfg is) and run the batch files in the Anaconda Prompt.
