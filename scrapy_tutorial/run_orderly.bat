@@ -3,7 +3,6 @@ set URL1="https://www.glassdoor.com/Interview/Google-Australia-Interview-Questio
 set URL2="https://www.glassdoor.com/Interview/Amazon-Australia-Interview-Questions-EI_IE6036.0,6_IL.7,16_IN16.htm"
 set URL3="https://www.glassdoor.com/Interview/Facebook-Australia-Interview-Questions-EI_IE40772.0,8_IL.9,18_IN16.htm"
 set URL4="https://www.glassdoor.com/Interview/Microsoft-Australia-Interview-Questions-EI_IE1651.0,9_IL.10,19_IN16.htm"
-set URL5="https://www.glassdoor.com/Interview/Accenture-Australia-Interview-Questions-EI_IE4138.0,9_IL.10,19_IN16.htm"
 del /f ~temp.json
 @echo on
 
@@ -21,8 +20,4 @@ del /f ~temp.json
 
 scrapy crawl order -a url=%URL4% -o ~temp.json
 copy /y ~temp.json MSFT.json
-del /f ~temp.json
-
-scrapy crawl order -a url=%URL5% -o ~temp.json
-copy /y ~temp.json ACN.json
 del /f ~temp.json
