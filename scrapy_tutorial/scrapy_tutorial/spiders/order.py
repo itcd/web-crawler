@@ -40,6 +40,8 @@ class OrderSpider(scrapy.Spider):
         if self.url_list:
             u = self.url_list.popleft()
             yield scrapy.Request(url=u, callback=self.parse_item, dont_filter=True)
+        
+        yield {'count': text}
 
     def parse_item(self, response):
         # Request the next page if available

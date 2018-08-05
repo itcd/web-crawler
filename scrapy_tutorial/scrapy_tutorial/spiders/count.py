@@ -49,7 +49,8 @@ class CountSpider(scrapy.Spider):
                     print(line[0:idx] + json_str)
                 else:
                     print(line.rstrip('\r\n'))
-            yield {'text': text, 'URLs': json_str}
+            
+            yield {'count': text, 'URLs': json_str}
 
     def spider_closed(self, spider):
         spider.logger.info('Spider closed: %s', spider.name)
