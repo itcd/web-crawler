@@ -9,14 +9,14 @@ import scrapy
 from unidecode import unidecode
 from collections import deque
 
-class OrderSpider(scrapy.Spider):
-    name = "order"
+class CountAndFetchSpider(scrapy.Spider):
+    name = "count_and_fetch"
     count = 0
     _url = 'https://www.glassdoor.com/Interview/Google-Australia-Interview-Questions-EI_IE9079.0,6_IL.7,16_IN16.htm'
     url_list = deque()
     
     def __init__(self, url=None, *args, **kwargs):
-        super(OrderSpider, self).__init__(*args, **kwargs)
+        super(CountAndFetchSpider, self).__init__(*args, **kwargs)
         self.log(url)
         if url is not None:
         	self._url = url

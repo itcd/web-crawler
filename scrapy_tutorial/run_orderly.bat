@@ -6,18 +6,18 @@ set URL4="https://www.glassdoor.com/Interview/Microsoft-Australia-Interview-Ques
 del /f ~temp.json
 @echo on
 
-scrapy crawl order -a url=%URL1% -o ~temp.json
+scrapy crawl count_and_fetch -a url=%URL1% -o ~temp.json
 copy /y ~temp.json GOOG.json
 del /f ~temp.json
 
-scrapy crawl order -a url=%URL2% -o ~temp.json
+scrapy crawl count_and_fetch -a url=%URL2% -o ~temp.json
 copy /y ~temp.json AMZN.json
 del /f ~temp.json
 
-scrapy crawl order -a url=%URL3% -o ~temp.json
+scrapy crawl count_and_fetch -a url=%URL3% -o ~temp.json
 copy /y ~temp.json FB.json
 del /f ~temp.json
 
-scrapy crawl order -a url=%URL4% -o ~temp.json
+scrapy crawl count_and_fetch -a url=%URL4% -o ~temp.json
 copy /y ~temp.json MSFT.json
 del /f ~temp.json
